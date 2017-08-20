@@ -1,0 +1,507 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		331FCDF21F468A5F0000F309 /* ListFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331FCDF01F468A5F0000F309 /* ListFriendViewController.swift */; };
+		331FCDF31F468A5F0000F309 /* ListFriendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 331FCDF11F468A5F0000F309 /* ListFriendViewController.xib */; };
+		331FCDF61F468CA70000F309 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331FCDF41F468CA70000F309 /* MoreViewController.swift */; };
+		331FCDF71F468CA70000F309 /* MoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 331FCDF51F468CA70000F309 /* MoreViewController.xib */; };
+		331FCDFA1F4690720000F309 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331FCDF81F4690720000F309 /* ChatViewController.swift */; };
+		331FCDFB1F4690720000F309 /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 331FCDF91F4690720000F309 /* ChatViewController.xib */; };
+		331FCE041F46A2B50000F309 /* ConversarionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331FCE021F46A2B50000F309 /* ConversarionTableViewCell.swift */; };
+		331FCE051F46A2B50000F309 /* ConversarionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 331FCE031F46A2B50000F309 /* ConversarionTableViewCell.xib */; };
+		331FCE081F46CC190000F309 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331FCE061F46CC190000F309 /* FriendTableViewCell.swift */; };
+		331FCE091F46CC190000F309 /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 331FCE071F46CC190000F309 /* FriendTableViewCell.xib */; };
+		3364E8A01F45783900B8D9FA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3364E89E1F45783900B8D9FA /* LoginViewController.swift */; };
+		3364E8A11F45783900B8D9FA /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3364E89F1F45783900B8D9FA /* LoginViewController.xib */; };
+		3364E8B01F45992900B8D9FA /* ListChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3364E8AE1F45992900B8D9FA /* ListChatViewController.swift */; };
+		3364E8B11F45992900B8D9FA /* ListChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3364E8AF1F45992900B8D9FA /* ListChatViewController.xib */; };
+		3364E8B41F459AC500B8D9FA /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3364E8B21F459AC500B8D9FA /* TabBarViewController.swift */; };
+		3364E8B51F459AC500B8D9FA /* TabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3364E8B31F459AC500B8D9FA /* TabBarViewController.xib */; };
+		3387BF911F43FE8500B4E6AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3387BF901F43FE8500B4E6AA /* AppDelegate.swift */; };
+		3387BF961F43FE8500B4E6AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3387BF941F43FE8500B4E6AA /* Main.storyboard */; };
+		3387BF981F43FE8500B4E6AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3387BF971F43FE8500B4E6AA /* Assets.xcassets */; };
+		3387BF9B1F43FE8500B4E6AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3387BF991F43FE8500B4E6AA /* LaunchScreen.storyboard */; };
+		33A3533D1F44241D00A9FAA3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 33A3533C1F44241D00A9FAA3 /* GoogleService-Info.plist */; };
+		33A3533F1F44289F00A9FAA3 /* SkinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A3533E1F44289E00A9FAA3 /* SkinView.swift */; };
+		33A353421F442C9100A9FAA3 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A353401F442C9100A9FAA3 /* RegisterViewController.swift */; };
+		33A353431F442C9100A9FAA3 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A353411F442C9100A9FAA3 /* RegisterViewController.xib */; };
+		33A353451F44456800A9FAA3 /* ViewExtensionss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A353441F44456800A9FAA3 /* ViewExtensionss.swift */; };
+		33A353471F4445D600A9FAA3 /* CheckExtensionss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A353461F4445D600A9FAA3 /* CheckExtensionss.swift */; };
+		33A353491F444BFC00A9FAA3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A353481F444BFC00A9FAA3 /* User.swift */; };
+		E51A0C01DC40BC392285EB43 /* Pods_MyRikkeiChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2D1A8F95058C9990C389719 /* Pods_MyRikkeiChat.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		331FCDF01F468A5F0000F309 /* ListFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListFriendViewController.swift; sourceTree = "<group>"; };
+		331FCDF11F468A5F0000F309 /* ListFriendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListFriendViewController.xib; sourceTree = "<group>"; };
+		331FCDF41F468CA70000F309 /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		331FCDF51F468CA70000F309 /* MoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreViewController.xib; sourceTree = "<group>"; };
+		331FCDF81F4690720000F309 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		331FCDF91F4690720000F309 /* ChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatViewController.xib; sourceTree = "<group>"; };
+		331FCE021F46A2B50000F309 /* ConversarionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversarionTableViewCell.swift; sourceTree = "<group>"; };
+		331FCE031F46A2B50000F309 /* ConversarionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConversarionTableViewCell.xib; sourceTree = "<group>"; };
+		331FCE061F46CC190000F309 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
+		331FCE071F46CC190000F309 /* FriendTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendTableViewCell.xib; sourceTree = "<group>"; };
+		3364E89E1F45783900B8D9FA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		3364E89F1F45783900B8D9FA /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		3364E8AE1F45992900B8D9FA /* ListChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListChatViewController.swift; sourceTree = "<group>"; };
+		3364E8AF1F45992900B8D9FA /* ListChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListChatViewController.xib; sourceTree = "<group>"; };
+		3364E8B21F459AC500B8D9FA /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		3364E8B31F459AC500B8D9FA /* TabBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabBarViewController.xib; sourceTree = "<group>"; };
+		3387BF8D1F43FE8500B4E6AA /* MyRikkeiChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyRikkeiChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3387BF901F43FE8500B4E6AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3387BF951F43FE8500B4E6AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3387BF971F43FE8500B4E6AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3387BF9A1F43FE8500B4E6AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3387BF9C1F43FE8500B4E6AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33A3533C1F44241D00A9FAA3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		33A3533E1F44289E00A9FAA3 /* SkinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinView.swift; sourceTree = "<group>"; };
+		33A353401F442C9100A9FAA3 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		33A353411F442C9100A9FAA3 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		33A353441F44456800A9FAA3 /* ViewExtensionss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtensionss.swift; sourceTree = "<group>"; };
+		33A353461F4445D600A9FAA3 /* CheckExtensionss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckExtensionss.swift; sourceTree = "<group>"; };
+		33A353481F444BFC00A9FAA3 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7B9E05EB404AAA0536994A30 /* Pods-MyRikkeiChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyRikkeiChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyRikkeiChat/Pods-MyRikkeiChat.debug.xcconfig"; sourceTree = "<group>"; };
+		A2416CC614CADF0476F8E866 /* Pods-MyRikkeiChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyRikkeiChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyRikkeiChat/Pods-MyRikkeiChat.release.xcconfig"; sourceTree = "<group>"; };
+		F2D1A8F95058C9990C389719 /* Pods_MyRikkeiChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyRikkeiChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3387BF8A1F43FE8500B4E6AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E51A0C01DC40BC392285EB43 /* Pods_MyRikkeiChat.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3387BF841F43FE8400B4E6AA = {
+			isa = PBXGroup;
+			children = (
+				3387BF8F1F43FE8500B4E6AA /* MyRikkeiChat */,
+				3387BF8E1F43FE8500B4E6AA /* Products */,
+				417BF0B9A49C8D051A83226B /* Pods */,
+				F186B6457656D7F9911EDA45 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3387BF8E1F43FE8500B4E6AA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3387BF8D1F43FE8500B4E6AA /* MyRikkeiChat.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3387BF8F1F43FE8500B4E6AA /* MyRikkeiChat */ = {
+			isa = PBXGroup;
+			children = (
+				33A353381F44235900A9FAA3 /* Support */,
+				33A353391F44236000A9FAA3 /* View */,
+				33A3533A1F44236500A9FAA3 /* Controller */,
+				33A3533B1F44236D00A9FAA3 /* Model */,
+			);
+			path = MyRikkeiChat;
+			sourceTree = "<group>";
+		};
+		33A353381F44235900A9FAA3 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				3387BF901F43FE8500B4E6AA /* AppDelegate.swift */,
+				3387BF941F43FE8500B4E6AA /* Main.storyboard */,
+				3387BF971F43FE8500B4E6AA /* Assets.xcassets */,
+				3387BF991F43FE8500B4E6AA /* LaunchScreen.storyboard */,
+				3387BF9C1F43FE8500B4E6AA /* Info.plist */,
+				33A3533C1F44241D00A9FAA3 /* GoogleService-Info.plist */,
+			);
+			name = Support;
+			sourceTree = "<group>";
+		};
+		33A353391F44236000A9FAA3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				33A353411F442C9100A9FAA3 /* RegisterViewController.xib */,
+				3364E89F1F45783900B8D9FA /* LoginViewController.xib */,
+				3364E8B31F459AC500B8D9FA /* TabBarViewController.xib */,
+				3364E8AF1F45992900B8D9FA /* ListChatViewController.xib */,
+				331FCDF11F468A5F0000F309 /* ListFriendViewController.xib */,
+				331FCDF51F468CA70000F309 /* MoreViewController.xib */,
+				331FCDF91F4690720000F309 /* ChatViewController.xib */,
+				331FCE031F46A2B50000F309 /* ConversarionTableViewCell.xib */,
+				331FCE071F46CC190000F309 /* FriendTableViewCell.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		33A3533A1F44236500A9FAA3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				33A353401F442C9100A9FAA3 /* RegisterViewController.swift */,
+				3364E89E1F45783900B8D9FA /* LoginViewController.swift */,
+				3364E8B21F459AC500B8D9FA /* TabBarViewController.swift */,
+				3364E8AE1F45992900B8D9FA /* ListChatViewController.swift */,
+				331FCDF01F468A5F0000F309 /* ListFriendViewController.swift */,
+				331FCDF41F468CA70000F309 /* MoreViewController.swift */,
+				331FCDF81F4690720000F309 /* ChatViewController.swift */,
+				331FCE021F46A2B50000F309 /* ConversarionTableViewCell.swift */,
+				331FCE061F46CC190000F309 /* FriendTableViewCell.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		33A3533B1F44236D00A9FAA3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				33A3533E1F44289E00A9FAA3 /* SkinView.swift */,
+				33A353441F44456800A9FAA3 /* ViewExtensionss.swift */,
+				33A353461F4445D600A9FAA3 /* CheckExtensionss.swift */,
+				33A353481F444BFC00A9FAA3 /* User.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		417BF0B9A49C8D051A83226B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7B9E05EB404AAA0536994A30 /* Pods-MyRikkeiChat.debug.xcconfig */,
+				A2416CC614CADF0476F8E866 /* Pods-MyRikkeiChat.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F186B6457656D7F9911EDA45 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F2D1A8F95058C9990C389719 /* Pods_MyRikkeiChat.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3387BF8C1F43FE8500B4E6AA /* MyRikkeiChat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3387BF9F1F43FE8500B4E6AA /* Build configuration list for PBXNativeTarget "MyRikkeiChat" */;
+			buildPhases = (
+				1BA7F60276534DDB3A4552DB /* [CP] Check Pods Manifest.lock */,
+				3387BF891F43FE8500B4E6AA /* Sources */,
+				3387BF8A1F43FE8500B4E6AA /* Frameworks */,
+				3387BF8B1F43FE8500B4E6AA /* Resources */,
+				ECF890AE00C38EA559692EA3 /* [CP] Embed Pods Frameworks */,
+				00E4A059FABF4219CC3CD5A2 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyRikkeiChat;
+			productName = MyRikkeiChat;
+			productReference = 3387BF8D1F43FE8500B4E6AA /* MyRikkeiChat.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3387BF851F43FE8400B4E6AA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = VuHongSon;
+				TargetAttributes = {
+					3387BF8C1F43FE8500B4E6AA = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 9ENKQ743S9;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 3387BF881F43FE8400B4E6AA /* Build configuration list for PBXProject "MyRikkeiChat" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3387BF841F43FE8400B4E6AA;
+			productRefGroup = 3387BF8E1F43FE8500B4E6AA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3387BF8C1F43FE8500B4E6AA /* MyRikkeiChat */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3387BF8B1F43FE8500B4E6AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3387BF9B1F43FE8500B4E6AA /* LaunchScreen.storyboard in Resources */,
+				33A353431F442C9100A9FAA3 /* RegisterViewController.xib in Resources */,
+				3364E8A11F45783900B8D9FA /* LoginViewController.xib in Resources */,
+				331FCE091F46CC190000F309 /* FriendTableViewCell.xib in Resources */,
+				33A3533D1F44241D00A9FAA3 /* GoogleService-Info.plist in Resources */,
+				3364E8B11F45992900B8D9FA /* ListChatViewController.xib in Resources */,
+				331FCDFB1F4690720000F309 /* ChatViewController.xib in Resources */,
+				331FCDF71F468CA70000F309 /* MoreViewController.xib in Resources */,
+				331FCDF31F468A5F0000F309 /* ListFriendViewController.xib in Resources */,
+				3387BF981F43FE8500B4E6AA /* Assets.xcassets in Resources */,
+				3364E8B51F459AC500B8D9FA /* TabBarViewController.xib in Resources */,
+				331FCE051F46A2B50000F309 /* ConversarionTableViewCell.xib in Resources */,
+				3387BF961F43FE8500B4E6AA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		00E4A059FABF4219CC3CD5A2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyRikkeiChat/Pods-MyRikkeiChat-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1BA7F60276534DDB3A4552DB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		ECF890AE00C38EA559692EA3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyRikkeiChat/Pods-MyRikkeiChat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3387BF891F43FE8500B4E6AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3364E8A01F45783900B8D9FA /* LoginViewController.swift in Sources */,
+				33A353471F4445D600A9FAA3 /* CheckExtensionss.swift in Sources */,
+				33A353421F442C9100A9FAA3 /* RegisterViewController.swift in Sources */,
+				331FCE041F46A2B50000F309 /* ConversarionTableViewCell.swift in Sources */,
+				33A353491F444BFC00A9FAA3 /* User.swift in Sources */,
+				331FCDF61F468CA70000F309 /* MoreViewController.swift in Sources */,
+				33A353451F44456800A9FAA3 /* ViewExtensionss.swift in Sources */,
+				3387BF911F43FE8500B4E6AA /* AppDelegate.swift in Sources */,
+				331FCDF21F468A5F0000F309 /* ListFriendViewController.swift in Sources */,
+				33A3533F1F44289F00A9FAA3 /* SkinView.swift in Sources */,
+				3364E8B01F45992900B8D9FA /* ListChatViewController.swift in Sources */,
+				331FCDFA1F4690720000F309 /* ChatViewController.swift in Sources */,
+				3364E8B41F459AC500B8D9FA /* TabBarViewController.swift in Sources */,
+				331FCE081F46CC190000F309 /* FriendTableViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3387BF941F43FE8500B4E6AA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3387BF951F43FE8500B4E6AA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3387BF991F43FE8500B4E6AA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3387BF9A1F43FE8500B4E6AA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3387BF9D1F43FE8500B4E6AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3387BF9E1F43FE8500B4E6AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3387BFA01F43FE8500B4E6AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B9E05EB404AAA0536994A30 /* Pods-MyRikkeiChat.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9ENKQ743S9;
+				INFOPLIST_FILE = MyRikkeiChat/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "-fury.MyRikkeiChat";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		3387BFA11F43FE8500B4E6AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2416CC614CADF0476F8E866 /* Pods-MyRikkeiChat.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9ENKQ743S9;
+				INFOPLIST_FILE = MyRikkeiChat/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "-fury.MyRikkeiChat";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3387BF881F43FE8400B4E6AA /* Build configuration list for PBXProject "MyRikkeiChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3387BF9D1F43FE8500B4E6AA /* Debug */,
+				3387BF9E1F43FE8500B4E6AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3387BF9F1F43FE8500B4E6AA /* Build configuration list for PBXNativeTarget "MyRikkeiChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3387BFA01F43FE8500B4E6AA /* Debug */,
+				3387BFA11F43FE8500B4E6AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3387BF851F43FE8400B4E6AA /* Project object */;
+}

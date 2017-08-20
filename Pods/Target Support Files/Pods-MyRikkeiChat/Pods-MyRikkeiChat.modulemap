@@ -1,0 +1,6 @@
+framework module Pods_MyRikkeiChat {
+  umbrella header "Pods-MyRikkeiChat-umbrella.h"
+
+  export *
+  module * { export * }
+}

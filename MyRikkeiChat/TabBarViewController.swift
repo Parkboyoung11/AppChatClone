@@ -15,8 +15,6 @@ class TabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("------------")
-        print(currentUser.email)
         let listChatNV = creatTabBarView(systemItem: UITabBarSystemItem.recents, rootView: ListChatViewController())
         let listFriendNV = creatTabBarView(systemItem: UITabBarSystemItem.contacts, rootView: ListFriendViewController())
         let moreNV = creatTabBarView(systemItem: UITabBarSystemItem.more, rootView: MoreViewController())

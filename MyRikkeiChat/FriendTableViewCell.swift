@@ -14,12 +14,10 @@ class FriendTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        imgAvatar.layer.cornerRadius = 20
+        imgAvatar.layer.cornerRadius = 25
         imgAvatar.layer.borderColor = UIColor.black.cgColor
         imgAvatar.layer.borderWidth = 1
         imgAvatar.layer.masksToBounds = true
-//        imgAvatar.image = #imageLiteral(resourceName: "icon")
-//        lblName.text = "haha"
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

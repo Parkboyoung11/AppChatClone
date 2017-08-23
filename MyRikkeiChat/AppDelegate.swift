@@ -23,7 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let initialViewController = RegisterViewController(veryImportantAttribute: attribute)
         //let initialViewController = RegisterViewController()
         
-        window?.rootViewController = LoginViewController()
+        let viewNV = UINavigationController(rootViewController: WelcomeViewController())
+        window?.rootViewController = viewNV
         window!.makeKeyAndVisible()
         return true
     }

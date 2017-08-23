@@ -9,10 +9,7 @@
 import UIKit
 import Firebase
 
-let storage = Storage.storage()
-let storageRef = storage.reference(forURL: "gs://appchatclone.appspot.com")
-var ref: DatabaseReference!
-var currentUser:User!
+
 
 class RegisterViewController: UIViewController {
     @IBOutlet weak var brView: UIView!
@@ -38,13 +35,7 @@ class RegisterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        ref = Database.database().reference()
-//        let firebaseAuth = Auth.auth()
-//        do {
-//            try firebaseAuth.signOut()
-//        } catch let signOutError as NSError {
-//            print ("Error signing out: %@", signOutError)
-//        }
+        lock = 1
         hideKeyboardWhenTappedAround()
         brView.myViewSkin()
         bgView.myViewSkin()
@@ -93,6 +84,7 @@ class RegisterViewController: UIViewController {
             Auth.auth().createUser(withEmail: email, password: pass) { (user, error) in
                 if (error == nil) {
                     print("Creat Account Succeeded")
+                    print("-------------------")
                     Auth.auth().signIn(withEmail: email, password: pass) { (user, error) in
                         if (error == nil) {
                             print("Sign In Succeeded")
@@ -115,32 +107,7 @@ class RegisterViewController: UIViewController {
                         changeRequest?.commitChanges { (error) in
                             if (error == nil) {
                                 print("Upload Succeeded")
-                                let user = Auth.auth().currentUser
-                                if let user = user {
-                                    let uid = user.uid
-                                    let email = user.email
-                                    let photoURL = user.photoURL
-                                    let name = user.displayName
-                                    currentUser = User(id: uid, email: email!, fullName: name!, photoURL: String(describing: photoURL!))
-                                    
-                                    let tableName = ref.child("users")
-                                    let userid = tableName.child(currentUser.id)
-                                    let user : Dictionary<String,String> = ["email": currentUser.email, "uid": currentUser.id , "fullName": currentUser.fullName, "photoURL": currentUser.photoURL]
-                                    userid.setValue(user)
-                                    print("Creat Database Succeeded")
-                                    let url:URL = URL(string: currentUser.photoURL)!
-                                    do{
-                                        let data = try Data(contentsOf: url)
-                                        currentUser.avatar = UIImage(data: data)
-                                        print("Get Avatar Succeeded")
-                                    }catch{
-                                        print("Get Avatar Failed")
-                                    }
-                                    self.present(TabBarViewController(), animated: true, completion: nil)
-                                }else {
-                                    print("Creat Database Failed")
-                                }
-                                //self.changeToListChat()
+                                self.present(TabBarViewController(), animated: true, completion: nil)
                             } else {
                                 print("Upload Failed")
                             }
@@ -156,8 +123,8 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func btnLoginDid(_ sender: UIButton) {
-        present(LoginViewController(), animated: true, completion: nil)
-//        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
+//        present(LoginViewController(), animated: true, completion: nil)
     }
     
     @IBAction func tapAvatarDid(_ sender: UITapGestureRecognizer) {

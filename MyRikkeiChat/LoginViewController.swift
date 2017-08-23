@@ -27,7 +27,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ref = Database.database().reference()
+        lock = 0
 //        let firebaseAuth = Auth.auth()
 //        do {
 //            try firebaseAuth.signOut()
@@ -35,7 +35,6 @@ class LoginViewController: UIViewController {
 //            print ("Error signing out: %@", signOutError)
 //        }
         hideKeyboardWhenTappedAround()
-        isLogIn()
         gbView.myViewSkin()
         txtEmail.myTextFieldSkin()
         txtPass.myTextFieldSkin()
@@ -61,6 +60,37 @@ class LoginViewController: UIViewController {
             noti.addAction(btn)
             present(noti, animated: true, completion: nil)
         } else {
+            
+            
+            let alertActivity:UIAlertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
+            let activity:UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
+            activity.color = #colorLiteral(red: 1, green: 0, blue: 0.009361755543, alpha: 1)
+            alertActivity.view.addSubview(activity)
+            activity.centerXAnchor.constraint(equalTo: alertActivity.view.centerXAnchor).isActive = true
+            activity.centerYAnchor.constraint(equalTo: alertActivity.view.centerYAnchor).isActive = true
+            activity.heightAnchor.constraint(equalTo: alertActivity.view.heightAnchor).isActive = true
+            activity.widthAnchor.constraint(equalTo: activity.heightAnchor).isActive = true
+            activity.startAnimating()
+            self.present(alertActivity, animated: true, completion: nil)
+            Auth.auth().signIn(withEmail: email, password: pass) { (user, error) in
+                if error == nil {
+                    activity.stopAnimating()
+                    alertActivity.dismiss(animated: true, completion: nil)
+                    print("Sign In Succeeded")
+                    self.present(TabBarViewController(), animated: true, completion: nil)
+                }else {
+                    activity.stopAnimating()
+                    alertActivity.dismiss(animated: true, completion: nil)
+                    print("Sign In Failed")
+                    let noti = UIAlertController(title: "Sign In Failed", message: "Please chech again!", preferredStyle: .alert)
+                    let btn = UIAlertAction(title: "OK", style: .default, handler: nil)
+                    noti.addAction(btn)
+                    self.present(noti, animated: true, completion: nil)
+                }
+            }
+            
+            
+            
             Auth.auth().signIn(withEmail: email, password: pass) { (user, error) in
                 if (error == nil) {
                     print("Sign In Succeeded")
@@ -97,29 +127,6 @@ class LoginViewController: UIViewController {
         print("Ahihi. Dont have this function. Please wait a long time :v")
     }
     
-    func isLogIn() {
-        Auth.auth().addStateDidChangeListener { (auth, user) in
-            if user != nil {
-                print("Loged in")
-                let uid = user?.uid
-                let email = user?.email
-                let photoURL = user?.photoURL
-                let name = user?.displayName
-                currentUser = User(id: uid!, email: email!, fullName: name!, photoURL: String(describing: photoURL!))
-                let url:URL = URL(string: currentUser.photoURL)!
-                do{
-                    let data = try Data(contentsOf: url)
-                    currentUser.avatar = UIImage(data: data)
-                    print("Get Avatar Succeeded")
-                }catch{
-                    print("Get Avatar Failed")
-                }
-                self.present(TabBarViewController(), animated: true, completion: nil)
-            }else {
-                print("Dont Log in")
-            }
-        }
-    }
     
 }
 

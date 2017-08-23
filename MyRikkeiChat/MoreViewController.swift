@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MoreViewController: UIViewController {
     
@@ -22,4 +23,17 @@ class MoreViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.title = "Information"
     }
+    
+    @IBAction func btnLogoutDid(_ sender: UIButton) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            currentUser = nil
+            visitor = nil
+            present(LoginViewController(), animated: true, completion: nil)
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+    }
+    
 }

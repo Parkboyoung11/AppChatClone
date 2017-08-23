@@ -9,12 +9,13 @@
 import UIKit
 import Firebase
 
+var visitor:User!
+
 class ListFriendViewController: UIViewController {
     @IBOutlet weak var searchBarFriends: UISearchBar!
     @IBOutlet weak var tblFriends: UITableView!
     
     var listFriends = [User]()
-    
     
     init() {
         super.init(nibName: "ListFriendViewController", bundle: nil)
@@ -23,11 +24,14 @@ class ListFriendViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        print("----------------")
-//        print(currentUser.email)
         self.automaticallyAdjustsScrollViewInsets = false
         navigationItem.title = "Friends"
         tblFriends.register(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: "cellID")
@@ -44,13 +48,13 @@ class ListFriendViewController: UIViewController {
                 let photoURL = value?["photoURL"] as? String ?? ""
                 let user:User = User(id: friendID, email: email, fullName: fullName, photoURL: photoURL)
                 self.listFriends.append(user)
+                DispatchQueue.main.async {
+                    self.tblFriends.reloadData()
+                }
             }) { (error) in
                 print(error.localizedDescription)
             }
         })
-        DispatchQueue.main.async {
-            self.tblFriends.reloadData()
-        }
     }
 
 
@@ -69,6 +73,22 @@ extension ListFriendViewController : UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 190
+        return 60
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let layout = UICollectionViewFlowLayout()
+        let controller = ChatCollectionViewController(collectionViewLayout: layout)
+        controller.friendName = listFriends[indexPath.row].fullName
+        visitor = listFriends[indexPath.row]
+        let url = URL(string: visitor.photoURL)
+        do{
+            let data = try Data(contentsOf: url!)
+            visitor.avatar = UIImage(data: data)
+        }catch {
+            visitor.avatar = UIImage(named: "Personalicon")
+            print("Load Avatar Visitor Error")
+        }
+        navigationController?.pushViewController(controller, animated: true)
     }
 }

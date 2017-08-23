@@ -9,6 +9,9 @@
 import UIKit
 import Firebase
 
+var currentUser:User!
+var ref: DatabaseReference!
+
 class ListChatViewController: UIViewController {
     @IBOutlet weak var tblConversations: UITableView!
     
@@ -22,12 +25,42 @@ class ListChatViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref = Database.database().reference()
         self.automaticallyAdjustsScrollViewInsets = false
         navigationItem.title = "Conversations"
-        //tblConversations.register(ConversarionTableViewCell.self, forCellReuseIdentifier: "cellID")
         tblConversations.register(UINib(nibName: "ConversarionTableViewCell", bundle: nil), forCellReuseIdentifier: "cellID")
         tblConversations.dataSource = self
         tblConversations.delegate = self
+        
+        let user = Auth.auth().currentUser
+        if let user = user {
+            let uid = user.uid
+            let email = user.email
+            let photoURL = user.photoURL
+            let name = user.displayName
+            currentUser = User(id: uid, email: email!, fullName: name!, photoURL: String(describing: photoURL!))
+            print(lock)
+            if lock == 1 {
+                print("-----aaaaaaaa-------")
+                let tableName = ref.child("users")
+                let userid = tableName.child(currentUser.id)
+                let user : Dictionary<String,String> = ["email": currentUser.email, "uid": currentUser.id , "fullName": currentUser.fullName, "photoURL": currentUser.photoURL]
+                userid.setValue(user)
+                print("Creat Database Succeeded")
+            }
+            
+            let url:URL = URL(string: currentUser.photoURL)!
+            do{
+                let data = try Data(contentsOf: url)
+                currentUser.avatar = UIImage(data: data)
+                print("Get Avatar Succeeded")
+            }catch{
+                print("Get Avatar Failed")
+            }
+        }else {
+            print("No Current User")
+        }
+        
     }
     
 }

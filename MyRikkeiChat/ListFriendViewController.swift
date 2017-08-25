@@ -34,6 +34,8 @@ class ListFriendViewController: UIViewController {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
         navigationItem.title = "Friends"
+        navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(addFriendButtonDid)), animated: true)
+        
         tblFriends.register(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: "cellID")
         tblFriends.dataSource = self
         tblFriends.delegate = self
@@ -56,7 +58,10 @@ class ListFriendViewController: UIViewController {
             }
         })
     }
-
+    
+    func addFriendButtonDid() {
+        navigationController?.pushViewController(AddFriendViewController(), animated: true)
+    }
 
 }
 
@@ -77,6 +82,7 @@ extension ListFriendViewController : UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        indexSS = indexPath.row
         let layout = UICollectionViewFlowLayout()
         let controller = ChatCollectionViewController(collectionViewLayout: layout)
         controller.friendName = listFriends[indexPath.row].fullName

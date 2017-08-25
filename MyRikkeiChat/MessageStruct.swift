@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 struct messageStruct {
     let fromUID:String!
     let content:String!

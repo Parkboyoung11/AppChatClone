@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		330AD9B51F4D6C6C00EE1EBF /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330AD9B31F4D6C6C00EE1EBF /* AddFriendViewController.swift */; };
+		330AD9B61F4D6C6C00EE1EBF /* AddFriendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 330AD9B41F4D6C6C00EE1EBF /* AddFriendViewController.xib */; };
 		330DAA011F4D41C70046C1EC /* MessageStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330DAA001F4D41C70046C1EC /* MessageStruct.swift */; };
 		331FCDF21F468A5F0000F309 /* ListFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331FCDF01F468A5F0000F309 /* ListFriendViewController.swift */; };
 		331FCDF31F468A5F0000F309 /* ListFriendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 331FCDF11F468A5F0000F309 /* ListFriendViewController.xib */; };
@@ -41,6 +43,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		330AD9B31F4D6C6C00EE1EBF /* AddFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
+		330AD9B41F4D6C6C00EE1EBF /* AddFriendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddFriendViewController.xib; sourceTree = "<group>"; };
 		330DAA001F4D41C70046C1EC /* MessageStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageStruct.swift; sourceTree = "<group>"; };
 		331FCDF01F468A5F0000F309 /* ListFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListFriendViewController.swift; sourceTree = "<group>"; };
 		331FCDF11F468A5F0000F309 /* ListFriendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListFriendViewController.xib; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 				331FCDF91F4690720000F309 /* ChatViewController.xib */,
 				331FCE031F46A2B50000F309 /* ConversarionTableViewCell.xib */,
 				331FCE071F46CC190000F309 /* FriendTableViewCell.xib */,
+				330AD9B41F4D6C6C00EE1EBF /* AddFriendViewController.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -162,6 +167,7 @@
 				331FCE021F46A2B50000F309 /* ConversarionTableViewCell.swift */,
 				331FCE061F46CC190000F309 /* FriendTableViewCell.swift */,
 				33874E051F4AD4E400D54C39 /* ChatCollectionViewController.swift */,
+				330AD9B31F4D6C6C00EE1EBF /* AddFriendViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -264,6 +270,7 @@
 				3364E8A11F45783900B8D9FA /* LoginViewController.xib in Resources */,
 				331FCE091F46CC190000F309 /* FriendTableViewCell.xib in Resources */,
 				33A3533D1F44241D00A9FAA3 /* GoogleService-Info.plist in Resources */,
+				330AD9B61F4D6C6C00EE1EBF /* AddFriendViewController.xib in Resources */,
 				3364E8B11F45992900B8D9FA /* ListChatViewController.xib in Resources */,
 				331FCDFB1F4690720000F309 /* ChatViewController.xib in Resources */,
 				331FCDF71F468CA70000F309 /* MoreViewController.xib in Resources */,
@@ -341,6 +348,7 @@
 				33874E061F4AD4E400D54C39 /* ChatCollectionViewController.swift in Sources */,
 				3387BF911F43FE8500B4E6AA /* AppDelegate.swift in Sources */,
 				331FCDF21F468A5F0000F309 /* ListFriendViewController.swift in Sources */,
+				330AD9B51F4D6C6C00EE1EBF /* AddFriendViewController.swift in Sources */,
 				33A3533F1F44289F00A9FAA3 /* SkinView.swift in Sources */,
 				3364E8B01F45992900B8D9FA /* ListChatViewController.swift in Sources */,
 				331FCDFA1F4690720000F309 /* ChatViewController.swift in Sources */,

@@ -58,6 +58,7 @@ extension UIImageView {
                 }
             }catch {
                 activity.stopAnimating()
+                self.image = UIImage(named: "Personalicon")
                 print("Load Avatar Error")
             }
             

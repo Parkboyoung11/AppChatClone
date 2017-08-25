@@ -30,6 +30,7 @@ class MoreViewController: UIViewController {
             try firebaseAuth.signOut()
             currentUser = nil
             visitor = nil
+            indexSS = -1
             present(LoginViewController(), animated: true, completion: nil)
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)

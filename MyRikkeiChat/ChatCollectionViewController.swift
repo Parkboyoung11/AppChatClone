@@ -13,12 +13,7 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
     
     var friendName : String = String()
     fileprivate let cellId = "cellIdd"
-    var arrIDChat : Array<String> = Array<String>()
-//    var tableIDConversation : DatabaseReference!
-    var arrTxtChat : Array<String> = Array<String>()
-    var arrUserChat : Array<User> = Array<User>()
     var keyOfConversations : String = String()
-    
     var listMessage : [messageStruct] = [messageStruct]()
     
     let messageInputContainerView : UIView = {
@@ -72,10 +67,7 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
             if conversationID == "" {
                 let idFirebaseCurrent = ref.child("user-conversations").child(currentUser.id).child(visitor.id)
                 let idFirebaseVisitor = ref.child("user-conversations").child(visitor.id).child(currentUser.id)
-//                let idApp = self.creatConversation()
                 self.creatConversation()
-//                idFirebaseCurrent.setValue(idApp)
-//                idFirebaseVisitor.setValue(idApp)
                 idFirebaseCurrent.setValue(self.keyOfConversations)
                 idFirebaseVisitor.setValue(self.keyOfConversations)
                 self.showConversationToView(id : self.keyOfConversations)
@@ -98,7 +90,6 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
         let randomID = ref.child("conversations").childByAutoId()
         keyOfConversations = randomID.key
         randomID.child("members").setValue(user)
-//        return keyOfConversations
     }
     
     func showConversationToView(id : String) {

@@ -85,7 +85,7 @@ extension ListFriendViewController : UITableViewDelegate, UITableViewDataSource 
         indexSS = indexPath.row
         let layout = UICollectionViewFlowLayout()
         let controller = ChatCollectionViewController(collectionViewLayout: layout)
-        controller.friendName = listFriends[indexPath.row].fullName
+//        controller.friendName = listFriends[indexPath.row].fullName
         visitor = listFriends[indexPath.row]
         let url = URL(string: visitor.photoURL)
         do{

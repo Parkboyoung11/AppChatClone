@@ -32,6 +32,7 @@ class ListChatViewController: UIViewController {
     
     var mesIDList = [[String]]()
     var membersIDList = [[String]]()
+    var membersImageData = [[Data]]()
     
 
     override func viewDidLoad() {
@@ -39,7 +40,8 @@ class ListChatViewController: UIViewController {
         ref = Database.database().reference()
         self.automaticallyAdjustsScrollViewInsets = false
         navigationItem.title = "Conversations"
-        navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(addConversationButtonDid)), animated: true)
+        
+            navigationItem.setRightBarButton(UIBarButtonItem(image: UIImage(named: "new_message_icon"), style: .plain, target: self, action: #selector(addConversationButtonDid)), animated: true)
         tblConversations.register(UINib(nibName: "ConversarionTableViewCell", bundle: nil), forCellReuseIdentifier: "cellID")
         tblConversations.dataSource = self
         tblConversations.delegate = self
@@ -70,13 +72,11 @@ class ListChatViewController: UIViewController {
             
             
             var count : Int = 0
-//            var count2 : Int = 0
             
             
             let tableID = ref.child("user-conversations").child(currentUser.id)
             tableID.observe(.childAdded, with: { (snapshot) in
                 let conversationid = snapshot.value as! String
-                
                 let tableMembers = ref.child("conversations").child(conversationid).child("members")
                 tableMembers.observe(.childAdded, with: { (snapshot2) in
                     DispatchQueue.main.async {
@@ -87,31 +87,29 @@ class ListChatViewController: UIViewController {
                             indexSS += 1
                             self.membersIDList.append(["startmember"])
                             self.mesIDList.append(["startmes"])
-//                            if count2 != 0 {
-                                self.tblConversations.reloadData()
-//                            }
-//                            count2 += 1
+                            self.tblConversations.reloadData()
                         }
                         count += 1
                         if snapshot2.key != currentUser.id {
                             print(indexSS)
-                            
+                       
                             self.membersIDList[indexSS].append(snapshot2.key)
-                            print("---------members----------")
-                            print(self.membersIDList)
-                            print("\n")
+//                            print("---------members----------")
+//                            print(self.membersIDList)
+//                            print("\n")
                         }
                     }
                 })
                 
+                
                 let tableMesID = ref.child("conversations").child(conversationid).child("messages")
                 tableMesID.observe(.childAdded, with: { (snapshot3) in
                     DispatchQueue.main.async {
-//                        count = 0
                         self.mesIDList[indexSS].append(snapshot3.key)
-                        print("---------mesID----------")
-                        print(self.mesIDList)
-                        print("\n")
+//                        print("---------mesID----------")
+//                        print(self.mesIDList)
+//                        print("\n")
+                        
                     }
                     
                 })
@@ -127,11 +125,15 @@ class ListChatViewController: UIViewController {
         }else {
             print("No Current User")
         }
-        
+
     }
     
     func addConversationButtonDid() {
-//        navigationController?.pushViewController(AddFriendViewController(), animated: true)
+        navigationController?.pushViewController(NewConversationWithMultiplayer(), animated: true)
+    }
+    
+    func addInforToArray(){
+        
     }
     
 }
@@ -164,18 +166,29 @@ extension ListChatViewController : UITableViewDelegate, UITableViewDataSource {
             }) { (error) in
                 print(error.localizedDescription)
             }
-            
-            ref.child("users").child(membersIDList[indexPath.row][i]).child("photoURL").observeSingleEvent(of: .value, with: { (snapshot) in
+        }
+        if membersIDList[indexPath.row].count == 2 {
+            ref.child("users").child(membersIDList[indexPath.row][1]).child("photoURL").observeSingleEvent(of: .value, with: { (snapshot) in
                 let photoURL = snapshot.value as! String
                 cell.imgAvatar.loadAvatar(link: photoURL)
             }) { (error) in
                 print(error.localizedDescription)
             }
+        }else if membersIDList[indexPath.row].count > 2 {
+            cell.imgAvatar.image = #imageLiteral(resourceName: "Personalicon")
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        indexSS = indexPath.row
+        let layout = UICollectionViewFlowLayout()
+        let controller = ChatViewForListConversations(collectionViewLayout: layout)
+        controller.membersIDList = membersIDList[indexPath.row]
+        navigationController?.pushViewController(controller, animated: true)
     }
 }

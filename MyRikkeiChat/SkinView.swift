@@ -42,22 +42,22 @@ extension UIImageView {
     func loadAvatar(link: String) {
         let queue = DispatchQueue(label: "Load Image", qos: DispatchQoS.default, attributes: DispatchQueue.Attributes.concurrent, autoreleaseFrequency: DispatchQueue.AutoreleaseFrequency.inherit, target: nil)
         
-        let activity = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
-        
-        activity.frame = CGRect(x: self.frame.size.width/2, y: self.frame.size.height/2, width: 0, height: 0)
-        activity.color = #colorLiteral(red: 1, green: 0, blue: 0.009361755543, alpha: 1)
-        self.addSubview(activity)
-        activity.startAnimating()
+//        let activity = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
+//        
+//        activity.frame = CGRect(x: self.frame.size.width/2, y: self.frame.size.height/2, width: 0, height: 0)
+//        activity.color = #colorLiteral(red: 1, green: 0, blue: 0.009361755543, alpha: 1)
+//        self.addSubview(activity)
+//        activity.startAnimating()
         queue.async {
             let url:URL = URL(string: link)!
             do{
                 let data = try Data(contentsOf: url)
                 DispatchQueue.main.async {
-                    activity.stopAnimating()
+//                    activity.stopAnimating()
                     self.image = UIImage(data: data)
                 }
             }catch {
-                activity.stopAnimating()
+//                activity.stopAnimating()
                 self.image = UIImage(named: "Personalicon")
                 print("Load Avatar Error")
             }

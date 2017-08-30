@@ -157,10 +157,10 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let imgChoose = info[UIImagePickerControllerOriginalImage] as! UIImage
         let imgValue = max(imgChoose.size.width, imgChoose.size.height)
-        if(imgValue > 2000){
-            imgData = UIImageJPEGRepresentation(imgChoose, 0.3)!
-        }else if imgValue > 1000 {
-            imgData = UIImageJPEGRepresentation(imgChoose, 0.5)!
+        if(imgValue > 1000){
+            imgData = UIImageJPEGRepresentation(imgChoose, 0.1)!
+        }else if imgValue > 500 {
+            imgData = UIImageJPEGRepresentation(imgChoose, 0.2)!
         } else {
             imgData = UIImagePNGRepresentation(imgChoose)!
         }

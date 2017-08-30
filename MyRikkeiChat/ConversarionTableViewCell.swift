@@ -20,7 +20,7 @@ class ConversarionTableViewCell: UITableViewCell {
         imgAvatar.layer.borderColor = UIColor.blue.cgColor
         imgAvatar.layer.borderWidth = 1
         imgAvatar.layer.masksToBounds = true
-        imgAvatar.image = #imageLiteral(resourceName: "icon")
+        imgAvatar.image = #imageLiteral(resourceName: "Personalicon")
         lblName.text = "haha"
         lblChat.text = "hehe"
     }

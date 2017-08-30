@@ -12,8 +12,8 @@ import UIKit
 struct User {
     let id : String!
     let email : String!
-    let fullName : String!
-    let photoURL : String!
+    var fullName : String!
+    var photoURL : String!
     var avatar : UIImage!
     
     init() {

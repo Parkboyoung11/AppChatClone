@@ -23,12 +23,7 @@ class AddFriendViewController: UIViewController {
     
     let searchBar : UISearchBar = {
         let searchBar = UISearchBar()
-//        self.keyboardType = UIKeyboardType.default
-//        self.returnKeyType = UIReturnKeyType.done
-//        self.clearButtonMode = UITextFieldViewMode.whileEditing
-//        self.contentVerticalAlignment = UIControlContentVerticalAlignment.center
         searchBar.keyboardType = UIKeyboardType.default
-//        searchBar.returnKeyType = UIReturnKeyType.done
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBar.placeholder = "Find friend with email"
         return searchBar

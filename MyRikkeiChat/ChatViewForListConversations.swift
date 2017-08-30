@@ -1,20 +1,25 @@
 //
-//  ChatCollectionViewController.swift
+//  ChatViewForListConversations.swift
 //  MyRikkeiChat
 //
-//  Created by VuHongSon on 8/21/17.
+//  Created by VuHongSon on 8/26/17.
 //  Copyright © 2017 VuHongSon. All rights reserved.
 //
+
 
 import UIKit
 import Firebase
 
-class ChatCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class ChatViewForListConversations: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
 //    var friendName : String = String()
     fileprivate let cellId = "cellIdd"
     var keyOfConversations : String = String()
     var listMessage : [messageStruct] = [messageStruct]()
+    var bottomConstraint : NSLayoutConstraint?
+    var friendID = String()
+    var arrIDChat : Array<String> = Array<String>()
+    var membersIDList = [String]()
     
     let messageInputContainerView : UIView = {
         let view = UIView()
@@ -39,16 +44,33 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
         return button
     }()
     
-    var bottomConstraint : NSLayoutConstraint?
-    var friendID = String()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        hideKeyboardWhenTappedAround()
+        membersIDList.remove(at: 0)
+        print(membersIDList)
+        var membersName : String = ""
+        for i in 0..<membersIDList.count {
+            ref.child("users").child(membersIDList[i]).child("fullName").observeSingleEvent(of: .value, with: { (snapshot) in
+                let memberName = snapshot.value as! String
+                if membersName != "" {
+                    membersName = membersName + ", " + memberName
+                }else {
+                    membersName = memberName
+                }
+                DispatchQueue.main.async {
+                    print(membersName)
+                    self.navigationItem.title = membersName
+                }
+                
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+        }
+        
+        
         tabBarController?.tabBar.isHidden = true
-        navigationItem.title = visitor.fullName
         collectionView?.backgroundColor = UIColor.white
-        collectionView?.register(ChatLogMessageCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(ChatLogVer2MessageCell.self, forCellWithReuseIdentifier: cellId)
         view.addSubview(messageInputContainerView)
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : messageInputContainerView]))
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[v0(48)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : messageInputContainerView]))
@@ -59,37 +81,31 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
         inputTextField.delegate = self
         
         setupInputComponents()
-
+        
+        for i in 0..<membersIDList.count {
+            arrIDChat.append(membersIDList[i])
+        }
+        
+        arrIDChat.sort()
+        
+        var keyIDUser = String()
+        
+        for i in 0..<arrIDChat.count {
+            keyIDUser = keyIDUser + arrIDChat[i]
+        }
+        
         ref.child("user-conversations").child(currentUser.id).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
-            let conversationID = value?[visitor.id] as? String ?? ""
-            
-            if conversationID == "" {
-                let idFirebaseCurrent = ref.child("user-conversations").child(currentUser.id).child(visitor.id)
-                let idFirebaseVisitor = ref.child("user-conversations").child(visitor.id).child(currentUser.id)
-                self.creatConversation()
-                idFirebaseCurrent.setValue(self.keyOfConversations)
-                idFirebaseVisitor.setValue(self.keyOfConversations)
-                self.showConversationToView(id : self.keyOfConversations)
-            }else {
-                self.keyOfConversations = conversationID
-                self.showConversationToView(id : conversationID)
-            }
+            let conversationID = value?[keyIDUser] as? String ?? ""
+            self.keyOfConversations = conversationID
+            self.showConversationToView(id : conversationID)
         }) { (error) in
             print(error.localizedDescription)
             print("---------Error!-----------")
         }
         
-        
         NotificationCenter.default.addObserver(self, selector: #selector(handKeyboardNotification), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handKeyboardNotification), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-    
-    func creatConversation() {
-        let user:Dictionary<String,String> = [currentUser.id : "TRUE", visitor.id : "TRUE"]
-        let randomID = ref.child("conversations").childByAutoId()
-        keyOfConversations = randomID.key
-        randomID.child("members").setValue(user)
     }
     
     func showConversationToView(id : String) {
@@ -115,7 +131,7 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
             let keyboardFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as! CGRect
             let isKeyboardShow = notification.name == NSNotification.Name.UIKeyboardWillShow
             bottomConstraint?.constant = isKeyboardShow ? -keyboardFrame.height : 0
-            UIView.animate(withDuration: 0, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { 
+            UIView.animate(withDuration: 0, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
                 self.view.layoutIfNeeded()
             }, completion: { (completed) in
                 if isKeyboardShow {
@@ -179,20 +195,33 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChatLogMessageCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChatLogVer2MessageCell
         let size = CGSize(width: 250, height: 1000)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
         let estimatedFrame = NSString(string: listMessage[indexPath.row].content).boundingRect(with: size, options: options, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18)], context: nil)
         
-        if listMessage[indexPath.row].fromUID == visitor.id {
+        if listMessage[indexPath.row].fromUID != currentUser.id {
             cell.messageTextView.text = listMessage[indexPath.row].content
-            cell.profileImageView.image = visitor.avatar
+            let idfriends = listMessage[indexPath.row].fromUID
+            for i in 0..<membersIDList.count {
+                if idfriends == membersIDList[i] {
+                    ref.child("users").child(idfriends!).child("photoURL").observeSingleEvent(of: .value, with: { (snapshot) in
+                        DispatchQueue.main.async {
+                            cell.profileImageView.loadAvatar(link: (snapshot.value as? String)!)
+                        }
+                    }) { (error) in
+                        print(error.localizedDescription)
+                    }
+                    
+                    break
+                }
+            }
             cell.profileImageView.isHidden = false
             cell.messageTextView.frame = CGRect(x: 48 + 8, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 20)
             cell.textBubbleView.frame = CGRect(x: 48, y: 0, width: estimatedFrame.width + 16 + 8, height: estimatedFrame.height + 20)
             cell.textBubbleView.backgroundColor = UIColor(white: 0.95, alpha: 1)
             cell.messageTextView.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        } else if listMessage[indexPath.row].fromUID == currentUser.id {
+        } else {
             cell.messageTextView.text = listMessage[indexPath.row].content
             cell.profileImageView.isHidden = true
             cell.messageTextView.frame = CGRect(x: view.frame.width - estimatedFrame.width - 32, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 20)
@@ -210,7 +239,7 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
         let estimatedFrame = NSString(string: listMessage[indexPath.row].content).boundingRect(with: size, options: options, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18)], context: nil)
         
         return CGSize(width: view.frame.width, height: estimatedFrame.height + 20)
-//        return CGSize(width: view.frame.width, height: 100)
+        //        return CGSize(width: view.frame.width, height: 100)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -219,7 +248,7 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
     
 }
 
-class ChatLogMessageCell: UICollectionViewCell {
+class ChatLogVer2MessageCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -262,7 +291,7 @@ class ChatLogMessageCell: UICollectionViewCell {
     }()
 }
 
-extension ChatCollectionViewController: UITextFieldDelegate {
+extension ChatViewForListConversations: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

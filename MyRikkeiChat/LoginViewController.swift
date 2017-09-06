@@ -27,6 +27,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = false
         lock = 0
         hideKeyboardWhenTappedAround()
         gbView.myViewSkin()
@@ -118,9 +119,11 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func btnForgotPass(_ sender: UIButton) {
-        print("Ahihi. Dont have this function. Please wait a long time :v")
+        let noti = UIAlertController(title: "😘", message: "Dont have this function. Please wait a long time. hehehe :v", preferredStyle: .alert)
+        let btn = UIAlertAction(title: "OK", style: .default, handler: nil)
+        noti.addAction(btn)
+        self.present(noti, animated: true, completion: nil)
     }
-    
     
 }
 

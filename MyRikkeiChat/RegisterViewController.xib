@@ -76,7 +76,7 @@
                                             <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                         </textField>
-                                        <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Personalicon" translatesAutoresizingMaskIntoConstraints="NO" id="VkM-BZ-yp7">
+                                        <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Personalicon" translatesAutoresizingMaskIntoConstraints="NO" id="VkM-BZ-yp7">
                                             <rect key="frame" x="71" y="264" width="170" height="170"/>
                                             <gestureRecognizers/>
                                             <constraints>

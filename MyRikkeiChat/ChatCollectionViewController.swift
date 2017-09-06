@@ -11,10 +11,14 @@ import Firebase
 
 class ChatCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-//    var friendName : String = String()
     fileprivate let cellId = "cellIdd"
     var keyOfConversations : String = String()
-    var listMessage : [messageStruct] = [messageStruct]()
+    var lockScroll = 0
+    var listMessage : [messageStruct] = [messageStruct](){
+        didSet {
+            lockScroll = 1
+        }
+    }
     
     let messageInputContainerView : UIView = {
         let view = UIView()
@@ -44,7 +48,6 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        hideKeyboardWhenTappedAround()
         tabBarController?.tabBar.isHidden = true
         navigationItem.title = visitor.fullName
         collectionView?.backgroundColor = UIColor.white
@@ -184,6 +187,12 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
         let estimatedFrame = NSString(string: listMessage[indexPath.row].content).boundingRect(with: size, options: options, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18)], context: nil)
         
+        if lockScroll == 1 {
+            let indexPaths = IndexPath(item: self.listMessage.count - 1, section: 0)
+            self.collectionView?.scrollToItem(at: indexPaths, at: .bottom, animated: true)
+            lockScroll = 0
+        }
+        
         if listMessage[indexPath.row].fromUID == visitor.id {
             cell.messageTextView.text = listMessage[indexPath.row].content
             cell.profileImageView.image = visitor.avatar
@@ -210,7 +219,6 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
         let estimatedFrame = NSString(string: listMessage[indexPath.row].content).boundingRect(with: size, options: options, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18)], context: nil)
         
         return CGSize(width: view.frame.width, height: estimatedFrame.height + 20)
-//        return CGSize(width: view.frame.width, height: 100)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

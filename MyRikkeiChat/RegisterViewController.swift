@@ -122,7 +122,6 @@ class RegisterViewController: UIViewController {
     
     @IBAction func btnLoginDid(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
-//        present(LoginViewController(), animated: true, completion: nil)
     }
     
     @IBAction func tapAvatarDid(_ sender: UITapGestureRecognizer) {

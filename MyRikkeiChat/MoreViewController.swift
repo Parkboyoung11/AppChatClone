@@ -46,7 +46,7 @@ class MoreViewController: UIViewController {
         imgView.isUserInteractionEnabled = true
         imgView.image = #imageLiteral(resourceName: "Personalicon")
         imgView.myImageSkin()
-        imgView.contentMode = UIViewContentMode.scaleAspectFit
+        imgView.contentMode = UIViewContentMode.scaleAspectFill
         imgView.translatesAutoresizingMaskIntoConstraints = false
         return imgView
     }()
@@ -115,6 +115,14 @@ class MoreViewController: UIViewController {
     func btnUpdateDid() {
         let updateName = nameTextField.text
         let updateAvatar = imgAvatar.image
+        let alertActivity:UIAlertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        let activity:UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
+        activity.color = #colorLiteral(red: 1, green: 0, blue: 0.009361755543, alpha: 1)
+        alertActivity.view.addSubview(activity)
+        activity.centerXAnchor.constraint(equalTo: alertActivity.view.centerXAnchor).isActive = true
+        activity.centerYAnchor.constraint(equalTo: alertActivity.view.centerYAnchor).isActive = true
+        activity.heightAnchor.constraint(equalTo: alertActivity.view.heightAnchor).isActive = true
+        activity.widthAnchor.constraint(equalTo: activity.heightAnchor).isActive = true
         
         if updateName == "" && imgAvatar.image == #imageLiteral(resourceName: "Personalicon") {
             let noti = UIAlertController(title: "Warning", message: "Please input Your Update Name or Avatar!", preferredStyle: .alert)
@@ -122,6 +130,10 @@ class MoreViewController: UIViewController {
             noti.addAction(btn)
             present(noti, animated: true, completion: nil)
         }else if updateName != "" && imgAvatar.image != #imageLiteral(resourceName: "Personalicon"){
+            
+            activity.startAnimating()
+            self.present(alertActivity, animated: true, completion: nil)
+            
             let avatarRef = storageRef.child("images/\(currentUser.email!).jpg")
             let uploadTask = avatarRef.putData(self.imgData, metadata: nil) { (metadata, error) in
                 guard let metadata = metadata else {
@@ -134,6 +146,10 @@ class MoreViewController: UIViewController {
                 changeRequest?.photoURL = downloadURL
                 changeRequest?.commitChanges { (error) in
                     if (error == nil) {
+                        
+                        activity.stopAnimating()
+                        alertActivity.dismiss(animated: true, completion: nil)
+                        
                         print("Upload Update Succeeded")
                         currentUser.fullName = updateName
                         currentUser.photoURL = String(describing: downloadURL!)
@@ -146,6 +162,10 @@ class MoreViewController: UIViewController {
                         noti.addAction(btn)
                         self.present(noti, animated: true, completion: nil)
                     } else {
+                        
+                        activity.stopAnimating()
+                        alertActivity.dismiss(animated: true, completion: nil)
+                        
                         print("Upload Update Failed")
                         self.imgAvatar.image = #imageLiteral(resourceName: "Personalicon")
                         self.nameTextField.text = ""
@@ -158,10 +178,18 @@ class MoreViewController: UIViewController {
             }
             uploadTask.resume()
         }else if updateAvatar == #imageLiteral(resourceName: "Personalicon") {
+            
+            activity.startAnimating()
+            self.present(alertActivity, animated: true, completion: nil)
+            
             let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
             changeRequest?.displayName = updateName!
             changeRequest?.commitChanges { (error) in
                 if (error == nil) {
+                    
+                    activity.stopAnimating()
+                    alertActivity.dismiss(animated: true, completion: nil)
+                    
                     print("Upload Your Name Succeeded")
                     currentUser.fullName = updateName
                     ref.child("users").child(currentUser.id).child("fullName").setValue(updateName)
@@ -171,6 +199,10 @@ class MoreViewController: UIViewController {
                     noti.addAction(btn)
                     self.present(noti, animated: true, completion: nil)
                 } else {
+                    
+                    activity.stopAnimating()
+                    alertActivity.dismiss(animated: true, completion: nil)
+                    
                     print("Upload Your Name Failed")
                     self.nameTextField.text = ""
                     let noti = UIAlertController(title: "Warning", message: "Sorry, Update Your Name Failed. Please try again!", preferredStyle: .alert)
@@ -180,6 +212,10 @@ class MoreViewController: UIViewController {
                 }
             }
         }else if updateName == "" {
+            
+            activity.startAnimating()
+            self.present(alertActivity, animated: true, completion: nil)
+            
             let avatarRef = storageRef.child("images/\(currentUser.email).jpg")
             let uploadTask = avatarRef.putData(self.imgData, metadata: nil) { (metadata, error) in
                 guard let metadata = metadata else {
@@ -192,6 +228,10 @@ class MoreViewController: UIViewController {
                 
                 changeRequest?.commitChanges { (error) in
                     if (error == nil) {
+                        
+                        activity.stopAnimating()
+                        alertActivity.dismiss(animated: true, completion: nil)
+                        
                         print("Upload Update Succeeded")
                         currentUser.photoURL = String(describing: downloadURL!)
                         ref.child("users").child(currentUser.id).child("photoURL").setValue(String(describing: downloadURL!))
@@ -201,6 +241,10 @@ class MoreViewController: UIViewController {
                         noti.addAction(btn)
                         self.present(noti, animated: true, completion: nil)
                     } else {
+                        
+                        activity.stopAnimating()
+                        alertActivity.dismiss(animated: true, completion: nil)
+                        
                         print("Upload Update Failed")
                         self.imgAvatar.image = #imageLiteral(resourceName: "Personalicon")
                         let noti = UIAlertController(title: "Warning", message: "Sorry, Update Your Avatar Failed. Please try again!", preferredStyle: .alert)

@@ -17,10 +17,10 @@
             <rect key="frame" x="0.0" y="0.0" width="311" height="80"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="311" height="79.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="311" height="80"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AN1-zg-4jC">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AN1-zg-4jC">
                         <rect key="frame" x="10" y="10" width="59.5" height="59.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="AN1-zg-4jC" secondAttribute="height" multiplier="1:1" id="PUP-KU-Fi7"/>

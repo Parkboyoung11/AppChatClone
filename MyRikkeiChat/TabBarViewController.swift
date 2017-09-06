@@ -15,11 +15,13 @@ class TabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = false
         let listChatNV = creatTabBarView(systemItem: UITabBarSystemItem.recents, rootView: ListChatViewController())
         let listFriendNV = creatTabBarView(systemItem: UITabBarSystemItem.contacts, rootView: ListFriendViewController())
         let moreNV = creatTabBarView(systemItem: UITabBarSystemItem.more, rootView: MoreViewController())
         
         viewControllers = [listChatNV, listFriendNV, moreNV]
+        print(1)
     }
     
     func creatTabBarView(systemItem : UITabBarSystemItem, rootView: UIViewController) -> UINavigationController {

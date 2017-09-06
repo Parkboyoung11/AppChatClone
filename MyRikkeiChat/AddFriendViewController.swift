@@ -74,7 +74,6 @@ class AddFriendViewController: UIViewController {
                 if postDict != nil {
                     let email = (postDict?["email"])
                     self.dataEmail.append(email!)
-//                    print(self.dataEmail)
                 }
             }
             

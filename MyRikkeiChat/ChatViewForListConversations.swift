@@ -12,10 +12,14 @@ import Firebase
 
 class ChatViewForListConversations: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-//    var friendName : String = String()
     fileprivate let cellId = "cellIdd"
     var keyOfConversations : String = String()
-    var listMessage : [messageStruct] = [messageStruct]()
+    var lockScroll = 0
+    var listMessage : [messageStruct] = [messageStruct](){
+        didSet {
+            lockScroll = 1
+        }
+    }
     var bottomConstraint : NSLayoutConstraint?
     var friendID = String()
     var arrIDChat : Array<String> = Array<String>()
@@ -199,6 +203,11 @@ class ChatViewForListConversations: UICollectionViewController, UICollectionView
         let size = CGSize(width: 250, height: 1000)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
         let estimatedFrame = NSString(string: listMessage[indexPath.row].content).boundingRect(with: size, options: options, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18)], context: nil)
+        if lockScroll == 1 {
+            let indexPaths = IndexPath(item: self.listMessage.count - 1, section: 0)
+            self.collectionView?.scrollToItem(at: indexPaths, at: .bottom, animated: true)
+            lockScroll = 0
+        }
         
         if listMessage[indexPath.row].fromUID != currentUser.id {
             cell.messageTextView.text = listMessage[indexPath.row].content

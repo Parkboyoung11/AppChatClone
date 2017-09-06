@@ -21,8 +21,8 @@ class ConversarionTableViewCell: UITableViewCell {
         imgAvatar.layer.borderWidth = 1
         imgAvatar.layer.masksToBounds = true
         imgAvatar.image = #imageLiteral(resourceName: "Personalicon")
-        lblName.text = "haha"
-        lblChat.text = "hehe"
+        lblName.text = ""
+        lblChat.text = ""
     }
     
     

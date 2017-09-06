@@ -150,8 +150,6 @@ class NewConversationWithMultiplayer: UIViewController {
         self.automaticallyAdjustsScrollViewInsets = false
         navigationItem.title = "New Conversation"
         listFriendsInConversation.append(currentUser.id)
-        
-        
         setupView()
         sendButton.addTarget(self, action: #selector(sendButtonDid(sender:)), for: .touchUpInside)
         tableView.register(NewConversationWithMultiplayerCell.self, forCellReuseIdentifier: "cell")
@@ -190,12 +188,6 @@ class NewConversationWithMultiplayer: UIViewController {
             UIView.animate(withDuration: 0, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
                 self.view.layoutIfNeeded()
             }, completion: { (completed) in
-                if isKeyboardShow {
-//                    if self.listMessage.count > 0 {
-//                        let indexPath = IndexPath(item: self.listMessage.count - 1, section: 0)
-//                        self.collectionView?.scrollToItem(at: indexPath, at: .bottom, animated: true)
-//                    }
-                }
             })
         }
     }
